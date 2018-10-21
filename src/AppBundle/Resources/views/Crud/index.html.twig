@@ -1,0 +1,46 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block content %}
+    <form>
+        <div class="form-group">
+            <label for="taxRates">{{ 'app.ui.price_with_vat'|trans }}</label>
+            <select class="form-control" id="taxRates">
+                <option selected data-toggle="price-with-vat">{{ 'app.ui.all'|trans }}</option>
+                <option data-toggle="price-with-vat-one">{{ 'app.ui.price_with_vat_one'|trans }}</option>
+                <option data-toggle="price-with-vat-two">{{ 'app.ui.price_with_vat_two'|trans }}</option>
+            </select>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ 'app.ui.created_at'|trans }}</th>
+                    <th scope="col">{{ 'app.ui.name'|trans }}</th>
+                    <th scope="col">{{ 'app.ui.description'|trans }}</th>
+                    <th scope="col">{{ 'app.ui.price_without_vat'|trans }}</th>
+                    <th scope="col" class="price-with-vat price-with-vat-one">{{ 'app.ui.price_with_vat_one'|trans }}</th>
+                    <th scope="col" class="price-with-vat price-with-vat-two">{{ 'app.ui.price_with_vat_two'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in resources %}
+                    <tr>
+                        <td scope="row">{{ product.createdAt|date }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.priceWithoutVAT }}</td>
+                        <td class="price-with-vat price-with-vat-one">{{ product.priceWithoutVAT|apply_tax_rate_one }}</td>
+                        <td class="price-with-vat price-with-vat-two">{{ product.priceWithoutVAT|apply_tax_rate_two }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/app/js/filter.js') }}"></script>
+{% endblock javascripts %}

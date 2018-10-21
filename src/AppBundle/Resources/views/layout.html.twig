@@ -11,7 +11,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block navbar %}
+                {% include '@App/Menu/_navbar.html.twig' %}
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+        {% endblock %}
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

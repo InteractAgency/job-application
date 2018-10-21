@@ -1,0 +1,16 @@
+app:
+    ui:
+        home: Home
+        create: Create
+        update: Update
+        delete: Delete
+        list: List
+        product: Product
+        name: Name
+        description: Description
+        price_without_vat: Price Without VAT
+        created_at: Created At
+        price_with_vat_one: "Price With VAT (17%)"
+        price_with_vat_two: "Price With VAT (20%)"
+        price_with_vat: Price With VAT
+        all: All

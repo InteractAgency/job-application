@@ -1,0 +1,13 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+
+    {% include '@App/Crud/_form.html.twig' %}
+
+    {% from '@App/Macro/form.html.twig' import createBtn %}
+    {{ createBtn() }}
+
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

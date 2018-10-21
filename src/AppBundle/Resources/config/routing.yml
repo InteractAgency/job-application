@@ -1,0 +1,6 @@
+app_product:
+    resource: |
+        alias: app.product
+        only: ['index', 'create']
+        templates: "@App/Crud"
+    type: sylius.resource
